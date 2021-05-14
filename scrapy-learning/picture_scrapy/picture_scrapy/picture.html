@@ -1,0 +1,1563 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8;no-cache" /><title>
+	全景网_创意图片搜索
+</title><meta name="keywords" content="图片,图片库,图片网,图片大全,图片素材,桌面壁纸,素材中国,全景,全景网" /><meta name="description" content="全景图片,中国最大的图片库和图片大全,提供创意图片素材和视频素材,图片库包括创意图片,编辑图片,图片素材,新闻图片，桌面壁纸等图片大全。全景网,图片分享和图片交易的平台。" /><meta http-equiv="pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="no-cache, must-revalidate" /><link href="/css/panorama/SearchResult.css?v=1" rel="stylesheet" type="text/css" /><link href="/css/panorama/frameSet.css?v=1" rel="stylesheet" type="text/css" /><link href="/css/float.css?v=1" rel="stylesheet" type="text/css" /><link href="/css/screen.css?v=4" rel="stylesheet" type="text/css" /><link href="/css/search.css?v=4" rel="stylesheet" type="text/css" /><link href="/css/reset.css?v=1" rel="stylesheet" type="text/css" />
+    
+    <script src="/js/jquery-1.11.3.min.js?v=1" type="text/javascript"></script>
+
+    <style type="text/css">
+        .header, .nav, .search, .footer, .content
+        {
+            width: auto;
+            margin: 0px 15px;
+            clear: both;
+        }
+        html
+        {
+            overflow: scroll;
+            overflow-x: hidden;
+            overflow-x: auto !important;
+        }
+        .list .fn a
+        {
+            margin-right: 2px;
+        }
+        .list li
+        {
+            margin-left: 15px;
+        }
+        .link
+        {
+            padding-left: 8px;
+            font-size: 12px;
+            line-height: 30px;
+            color: #666;
+        }
+        .dian
+        {
+            text-align: right;
+            padding: 0 10px 10px 0;
+            font-size: 12px;
+            line-height: 30px;
+            color: #666;
+        }
+        .content
+        {
+            min-height: 500px !important;
+        }
+        
+        /*本页*/
+        .ds_row
+        {
+            height: 20px;
+            line-height: 35px;
+        }
+        .ds_page_num
+        {
+            padding: 12px 0 0 0;
+        }
+        .ds_page_num span
+        {
+            float: left;
+            display: inline-block;
+            height: 22px;
+            line-height: 22px;
+            border: 1px #d3d3d3 solid;
+            padding: 0 3px;
+            margin: 2px 1px 0 4px;
+            position: relative;
+            cursor: pointer;
+        }
+        .ds_page_num span i
+        {
+            position: absolute;
+            background: #fff url(/images/ico_corner1.gif) 0 0 no-repeat;
+            width: 6px;
+            height: 6px;
+            right: -1px;
+            top: -1px;
+            width: 6px;
+            height: 6px;
+            z-index: 10;
+        }
+        .ds_page_num span.on
+        {
+            border-color: #f29600;
+            color: #f29600;
+        }
+        .ds_page_num span.on i
+        {
+            background: #fff url(/images/ico_corner2.gif) 0 0 no-repeat;
+        }
+        
+        .ds_grid span
+        {
+            display: inline-block;
+            margin-left: 4px;
+        }
+        .grid_mode
+        {
+            display: inline-block;
+            position: relative;
+            top: 17px;
+            margin-left: -10px;
+        }
+        .grid_mode li
+        {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .grid_mode li#grid-mode1
+        {
+            background: url(/images/search2016/ico_mode1.png?mid=2) 0 0 no-repeat;
+        }
+        .grid_mode li#grid-mode1.on
+        {
+            background: url(/images/search2016/ico_mode1_on.png?mid=2) 0 0 no-repeat;
+        }
+        .grid_mode li#grid-mode2
+        {
+            background: url(/images/search2016/ico_mode2.png?mid=2) 0 0 no-repeat;
+        }
+        .grid_mode li#grid-mode2.on
+        {
+            background: url(/images/search2016/ico_mode2_on.png?mid=2) 0 0 no-repeat;
+        }
+        .grid_mode li#grid-mode1_tow
+        {
+            background: url(/images/search2016/ico_mode1.png?mid=2) 0 0 no-repeat;
+        }
+        .grid_mode li#grid-mode1_tow.on
+        {
+            background: url(/images/search2016/ico_mode1_on.png?mid=2) 0 0 no-repeat;
+        }
+        .grid_mode li#grid-mode2_two
+        {
+            background: url(/images/search2016/ico_mode2.png?mid=2) 0 0 no-repeat;
+        }
+        .grid_mode li#grid-mode2_two.on
+        {
+            background: url(/images/search2016/ico_mode2_on.png?mid=2) 0 0 no-repeat;
+        }
+        #footer
+        {
+            overflow: hidden;
+            margin-left: 0px;
+        }
+        .footer
+        {
+            font-family: "Microsoft Yahei" , Simsun, Arial, sans-serif;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+        .bottom
+        {
+            width: 100%;
+            height: 25px;
+        }
+        .footer h2
+        {
+            font-size: 12px;
+        }
+        .footer p
+        {
+            text-align: center;
+            color: #929292;
+            font-size: 12px;
+        }
+        input[type="text"]::-ms-clear
+        {
+            display: none;
+        }
+       #black_white2 .on{ border: #f29600 1px solid !important;}
+       
+    
+       
+    </style>
+    <link id="backgroundCssLink" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var UrlDecode = 'http://www.quanjing.com/search.aspx?q=极光';
+        var UrlHash = '';
+    </script>
+    
+</head>
+<body>
+    <form name="form1" method="post" action="search.aspx?q=%u6781%u5149" id="form1" onsubmit="return false;">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTIxMDEzMjIyNmRkTRfr5iSbR5Yigzdl0d6KjU2ZuLw=" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BBBC20B8" />
+</div>
+    
+<link href="/css/2018css/public/base.css?v=4" rel="stylesheet" type="text/css" />
+<link href="/css/2018css/public/header.css?v=6" rel="stylesheet" type="text/css" />
+<link href="/css/2018css/public/header_media.css?v=5" rel="stylesheet" type="text/css" />
+<link href="/css/2018css/public/search.css?v=3" rel="stylesheet" type="text/css" />
+
+ <link href="/css/float.css?v=1" rel="stylesheet" type="text/css" />
+
+
+<link href="/css/2017css/2017recognize.css?v=4" rel="stylesheet" type="text/css" />
+<header class="clearfix">
+        <section class="logo">
+            <a href="http://www.quanjing.com">
+               
+            </a>
+        </section>
+        <nav>
+            <ul>
+                <li><a class="fff" href="http://www.quanjing.com"> 首页</a></li>
+                <li> <a  href="/creative"> 创意图片</a></li>
+                <li><a href="http://editorial.quanjing.com/"> 编辑图片</a></li>
+                
+                <li><a href="/Design"> 设计素材</a></li>
+                
+                <li><a href="http://v.quanjing.com/">视频影像</a> </li>
+                <li><a href="http://s.quanjing.com/" target="_blank"> 供稿人</a> </li>
+                <li><a href="/commerce/"> 价格体系</a> </li>
+                
+            </ul>
+        </nav>
+
+          <ul class="top_right">
+            <li class="phone">4008-117-888</li>
+            <li class="rule">|</li>
+            <li class="shopping">
+                <a href="/Commerce/Cart.aspx">
+                    <div class="shop"></div>
+                    <span>(<b id="HeadShopCartCount">0</b>)</span>
+                </a>
+            </li>
+            <li class="rule">|</li>
+            
+            <div style="float:right;padding-top: 1px;">
+                <li class="head_portrait">
+                    <span></span>
+                </li>
+
+                <li>
+                    <a href="/login.aspx" id="Header_PS1_a_loginNot">登录</a>
+                </li>
+                <li>
+                    <a href="http://www.quanjing.com/Register.aspx" id="Header_PS1_a_reg1">注册</a>
+                </li>
+            </div>
+            
+        </ul>
+    </header>
+<!-- End header -->
+<!-- content start -->
+
+       
+        
+         <!-- 搜索框 -->
+        <div class="search_box">
+         <div class="thumb-box" id="img_query_box" style="display:none;">
+			<p class="thumb">
+                <img id="smallimage" style="height:100%;width:40px;">
+            </p>
+			<a class="thumb-btn" id="img_query_box_btn">X</a>
+		</div>
+                      
+            
+         <div class="st-box" style="margin-left: -310px; left: 50%; z-index: 2001; display: none;" id="shitubox">
+            <a href="javascript:void(0)" id="closeshitubox" class="close"></a>
+            <div class="st-title">以图搜图
+                <div class="help">
+                    <s id="help_icon"></s>
+                    <div class="help-wrap" style="display: none;" id="help_content">
+                     
+                        <div class="help-box">
+                            <h4>如何粘贴图片网址：</h4>
+                            <p>1、右键点击网页上的图片，选择“复制图片网址”。</p>
+                            <p>2、在搜索框中粘贴该网址（Ctrl+V），点击“识图搜索”按钮。</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="st-search">
+                <div class="st-input">
+                    <div class="st-input-s">
+                       
+                            <input name="query" type="text" id="url_form_query" placeholder="请粘贴图片网址">
+                            <input name="flag" type="hidden" value="1">
+                            <input name="drag" type="hidden" id="url_form_drag" value="0">
+                       
+                    </div>
+                </div>
+                <a class="searchbtn2" id="url_form_sbm">识图搜索</a>
+               
+            </div>
+            <div class="st-btns" id="no_ie_panel" style="font-size:14px; color:#666;">
+                <div class="area">
+                    <em></em>
+                    <p class="p-1">将图片拖至此处</p>
+                </div>
+                <div class="upload" id="upload_pic_btn">
+                    <em></em>
+                  
+	                  
+                    <input type="file"  id="inp" value="本地上传" onchange="getfile()" style="display:none;"/>
+                    <img id="imgPre" src="" width="300px" height="300px" style="display: none;" /> 
+                    <input type="button" value="本地上传" class="upload-btn" id="uploadimage">
+                    
+                   
+                </div>
+            </div>
+            <div class="st-btns for-ie" id="ie_panel" style="display: none;">
+                <div class="upload" id="upload_pic_btn_ie" style="position:relative">
+                    <em></em>
+                    <input type="button" value="本地上传" class="upload-btn" onclick="uploadImage()"; disabled="disabled">
+                    
+                </div>
+                <div class="area">
+                    <em></em>
+                    <p class="p-1">当前浏览器暂不支持图片拖拽功能</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="dragbox_file" class="st-box st-hover" style="margin-left: -235px; left: 50%; z-index: 2001; display: none;">
+
+            <div class="st-mask"></div>
+            <div class="drag-box"></div>
+            <div class="area2">
+                <em></em>
+                <p class="p-1">将图片拖至此处</p>
+            </div>
+            <a href="javascript:void(0)" class="close" id="close_drag_file"></a>
+
+
+            
+        </div>
+        <div class="st-box" id="dragbox_load" style="margin-left:-235px;left:50%;z-index:2001;display: none;">
+            <a href="javascript:void(0)" class="close" id="close_dragbox_load"></a>
+            <div class="area2">
+                <em></em>
+                <p class="p-1">正在识别中，请稍候…</p>
+            </div>
+            <img src="" class="st-load">
+        </div>
+        <div class="st-box" id="dragbox_common" style="margin-left:-310px;left:50%;z-index:2001;display: none;">
+            <div class="st-mask"></div>
+            <div class="drag-box"></div>
+            <div class="area2>
+                <em></em>
+                <p class="p-1">将图片拖至此处</p>
+            </div>
+            <a href="javascript:void(0)" class="close" id="close_dragbox_common"></a>
+        </div>
+       
+        
+         
+             <!--以图搜图关闭按钮-->
+             <div class="key_close_div" style="position: absolute; right: 200px; top: 20px; cursor: pointer;display:none;">  
+                <img src="/image/head2016/index_03.png" width="25" height="25" id="head_clearKey" />
+             </div>
+             
+             <span class="headsearchbt">
+             
+             
+                </span>
+         
+             <!--以图搜图关闭按钮-->
+
+          
+            <b onclick="SearchImgDefault()"></b>
+            <input type="text" id="txt_Keyword" name="txt_Keyword" title=""  autocomplete="off"  value=""  action="/SearchTip.ashx" columns="1" capture="1"   placeholder="搜索您喜欢的...">
+            <i id="SearchPic">
+                 <b style=" display:none;width: 150px; height: 40px; line-height: 40px; font-size: 12px; color: #666; background: #fff; position: absolute; top: 43px; left: -30px; text-align: center; border-radius: 6px;z-index:99;">上传图片就能以图搜图
+                                                        <strong class="triangle-up" style="position: absolute; top: -8px; left: 43px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 10px solid #fff;"></strong>
+                            </b>
+            </i>
+            <div class="all_picture " style="background:none;">
+               <span></span> 
+               <div class="type_downlist" v="1">全部图片</div>
+               <ul class="downpicture" style="display: none;">
+                <li v="5">全部视频</li>
+                <li v="2">照片</li>
+               
+                <li v="4">插画</li>
+            </ul>
+            </div>
+        </div> 
+        <input type="hidden" id="hiddenLoginName" value="" />
+        <input type="hidden" id="hiddenUserId" value="" />
+         <!-- 搜索框 -->
+
+         <!--以图搜图关闭按钮-->
+         
+        
+       
+         <!--以图搜图关闭按钮-->
+
+        
+          
+        <script src="/js/2018js/public/public.js" type="text/javascript"></script>
+         <script src="/js/Bottom.js?v=20180411" type="text/javascript"></script>
+       <script src="/js/jquery.cookie.js?v=1" type="text/javascript"></script>
+       <script type="text/javascript" language="javascript" src="/js/searchtips2016.js?v=1"></script>
+
+<script type="text/javascript">
+
+//标识搜索类型
+    var flag_type = '1';
+    $(function () {
+        // 全部视频 下拉显示隐藏
+        $(".all_picture").mouseover(function () {
+            $('.downpicture').show();
+        });
+        $(".all_picture").mouseout(function () {
+            $('.downpicture').hide();
+        });
+        $(".downpicture").mouseout(function () {
+            $(this).hide();
+        });
+        $(".downpicture li").click(function () {
+            var text1 = $(".type_downlist").html();
+            var text2 = $(this).html();
+            var flag1 = $(".type_downlist").attr("v");
+            var flag2 = $(this).attr("v");
+            $(".type_downlist").html(text2).attr("v", flag2);
+            $(this).html(text1).attr("v", flag1);
+            flag_type = flag2;
+            $(".downpicture").hide();
+        })
+        var hWidth = $(window).width(); //获取可视区域高度
+        if (hWidth < 640) {
+            $('.media ul li div').removeClass('text').addClass('shade_describe');
+            $(".media ul li:eq(1)").css("display", "none");
+            $(".media ul li:eq(7)").css("display", "none");
+
+        } else {
+            $('.media ul li div').removeClass('shade_describe');
+            $(".media ul li:eq(1)").css("display", "inline-block");
+            $(".media ul li:eq(7)").css("display", "inline-block");
+        }
+
+        $("#txt_Keyword").bind("keyup", function (e) { 
+            if (e.keyCode == 13) {
+                SearchImgDefault();
+            }
+        })
+    })
+  
+
+
+    //监听div大小变化,改变搜索框下面的提示
+
+/*18.2.2 修改 数值*/
+    window.onload = function () {
+       if ($(".search_box").width() > 768) {
+            $("#txt_Keyword_list").css("width", $(".search_box").width() - 42);
+
+        } else {
+            $("#txt_Keyword_list").css("width", $(".search_box").width() - 22);
+        }
+    }
+    $('#txt_Keyword').bind('input propertychange', function () {
+        if ($(".search_box").width() > 768) {
+            $("#txt_Keyword_list").css("width", $(".search_box").width() - 42);
+
+        } else {
+            $("#txt_Keyword_list").css("width", $(".search_box").width() - 22);
+        }
+    });
+
+
+    $(".search_box").resize(function () {
+        if ($(".search_box").width() > 768) {
+            $("#txt_Keyword_list").css("width", $(".search_box").width() - 42);
+
+        } else {
+            $("#txt_Keyword_list").css("width", $(".search_box").width() - 22);
+        }
+
+    });
+
+    //监听div大小变化,改变搜索框下面的提示
+    $("#SearchPic").hover(function () {
+        $(this).children().toggle();
+    })
+    var loginName = document.getElementById("hiddenLoginName").value;
+    function RegTiankongPic(picid) {
+        var reg = /\bul\d{4}-\d{4}\b/;
+        return reg.test(picid);
+    }
+
+
+    !function (e, r, t, a, s) {
+        e.__visearch_obj = s;
+        var c = e[s] = e[s] || {};
+        c.q = c.q || [], c.factory = function (e) {
+            return function () {
+                var r = Array.prototype.slice.call(arguments);
+                return r.unshift(e), c.q.push(r), c
+            }
+        },
+   c.methods = ["idsearch", "uploadsearch", "colorsearch", "set", "send"];
+        for (var n = 0; n < c.methods.length; n++) {
+            var o = c.methods[n];
+            c[o] = c.factory(o)
+        }
+        var i = r.createElement(t);
+        i.type = "text/javascript", i.async = !0, i.src = a;
+        var h = r.getElementsByTagName(t)[0];
+        h.parentNode.insertBefore(i, h)
+    } (window, document, "script", "/js/SearchImage/visearch-1.3.1-beta.min.js", "visearch");
+    //    visearch.set("app_key", "f1f6600814fc3fbf420253fb063187bb");
+    visearch.set("app_key", "8008beb0f5088cec2aca16b14f4205fb");
+</script>
+<script>
+ 
+    //以图搜图开始
+             var clearKey = $('#head_clearKey'),
+                  txt_Keyword = $('#txt_Keyword');
+
+             txt_Keyword.bind('input propertychange', function () {
+                 if ($.trim(txt_Keyword.val()) != '') {
+                     clearKey.parent().show();
+                     $('#SearchPic').hide();
+                 } else {
+                     clearKey.parent().hide();
+                     $('#SearchPic').show();
+                 }
+             });
+             clearKey.bind('click', function () {
+                 txt_Keyword.val('');
+                 txt_Keyword.focus();
+                 clearKey.parent().hide();
+                 $('#SearchPic').show();
+             });
+             if (!$.trim(txt_Keyword.val())) {
+                 clearKey.parent().hide();
+             }
+             $(function () {
+                 $("#txt_Keyword").focus(function () {
+                     if ($("#img_query_box").length > 0 || $("#txt_Keyword").val().length > 0)
+                         $("#img_query_box").fadeOut(500)
+                 });
+                 $("#txt_Keyword").blur(function () {
+                     if ($("#img_query_box").length > 0 && $("#txt_Keyword").val().length == 0 && document.getElementById("smallimage").src != "")
+                         $("#img_query_box").fadeIn(500)
+                 });
+             })
+
+             $("#SearchPic").click(function () {
+                 $("#Header_PS1_div_HeadSearch").hide();
+                 //            $("#shitubox").show();
+                 var topScroll = document.body.scrollTop; //滚动的距离,距离顶部的距离
+                 var bignav = document.getElementById("shitubox"); //获取到导航栏id
+                 if (topScroll > 50) { //当滚动距离大于250px时执行下面的东西
+                     bignav.style.position = 'fixed';
+                     bignav.style.top = '0';
+                     bignav.style.zIndex = '9999';
+                     $("#shitubox").show();
+                     $("#Header_PS1_div_HeadSearch").hide();
+                 } else { //当滚动距离小于250的时候执行下面的内容，也就是让导航栏恢复原状
+
+                     bignav.style.position = 'fixed';
+                     $("#shitubox").css('display', 'block');
+
+                 }
+
+
+
+             })
+             //阻止默认事件
+             window.onload = function () {
+                 $(".upload-btn").click(function () {
+                     $("#inp").click();
+                 });
+                 //拖离
+                 document.addEventListener('dragleave', function (e) {
+                     e.preventDefault();
+                 });
+                 //拖后放
+                 document.addEventListener('drop', function (e) {
+                     e.preventDefault();
+                     window.location.href = "./details.html#preview";
+
+                 });
+
+
+                 //拖进
+                 document.addEventListener('dragenter', function (e) {
+                     e.preventDefault();
+                 });
+                 //拖来拖去
+                 document.addEventListener('dragover', function (e) {
+                     e.preventDefault();
+                 });
+                 var box = document.getElementById('dragbox_common'); //拖拽区域
+                 box.addEventListener("drop", function (e) {
+                     e.preventDefault(); //取消默认浏览器拖拽效果
+                     var fileList = e.dataTransfer.files; //获取文件对象
+                     //检测是否是拖拽文件到页面的操作
+                     if (fileList.length == 0) {
+                         return false;
+                     }
+                     //检测文件是不是图片
+                     if (fileList[0].type.indexOf('image') === -1) {
+                         alert("您拖的不是图片！");
+                         return false;
+                     }
+                     //拖拉图片到浏览器，可以实现预览功能
+                     window.URL = window.URL || window.webkitURL;
+                     var img = window.URL.createObjectURL(fileList[0]);
+                     var filename = fileList[0].name; //图片名称
+                     var filesize = Math.floor((fileList[0].size) / 1024);
+                     if (filesize > 500) {
+                         alert("上传大小不能超过500K.");
+                         return false;
+                     }
+
+                     //上传
+                     xhr = new XMLHttpRequest();
+                     xhr.open("post", "upload.php", true);
+                     xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+
+                     var fd = new FormData();
+                     fd.append('mypic', fileList[0]);
+                     xhr.send(fd);
+                 }, false);
+
+             };
+
+
+
+             $('#no_ie_panel')[0].addEventListener('dragenter', function (e) {
+                 $('#dragbox_common').show();
+                 $("#shitubox").hide();
+             }, false);
+
+             //拖拽离开,关闭按钮
+             $("#close_dragbox_common").click(function () {
+                 $("#dragbox_common").hide();
+                 $("#Header_PS1_div_HeadSearch").show();
+             })
+
+             $("#closeshitubox").click(function () {
+                 $("#shitubox").hide();
+
+                 $("#Header_PS1_div_HeadSearch").show();
+             })
+
+             $("#help_icon").hover(function () {
+                 $("#help_content").show();
+             })
+             $("#help_icon").mouseleave(function () {
+                 $("#help_content").hide();
+             })
+             //<--以图搜图结束-->
+             //        以图搜图开始
+             $("#SearchImage").click(function () {
+                 alert("sdfdf");
+                 $("#shitubox").show();
+                 $(".searchcon").hide();
+             })
+             function getfile() {
+                 if (!document.getElementById("inp").files[0]) return;
+                 var imagename = "";
+                 //上传本地图片到服务器
+                 var formData = new FormData();
+                 if (document.getElementById("inp").files[0].type.indexOf('image') === -1) {
+                     alert("您上传的不是图片！");
+                     $("#inp").val("")
+                     return false;
+                 }
+                 var filesize = Math.floor((document.getElementById("inp").files[0].size) / 1024 / 1024);
+                 if (filesize > 5) {
+                     $("#inp").val("")
+                     alert("图片大小不能超过5M!");
+                     return false;
+                 }
+                 formData.append("myfile", document.getElementById("inp").files[0]);
+                 SearchImage(formData);
+             }
+
+             //阻止默认事件
+             window.onload = function () {
+                 $(".upload-btn").click(function () {
+                     $("#inp").click();
+                 });
+
+
+                 //拖离
+                 document.addEventListener('dragleave', function (e) {
+                     e.preventDefault();
+                 });
+                 //拖后放
+                 document.addEventListener('drop', function (e) {
+                     e.preventDefault();
+                     var fileList = e.dataTransfer.files; //获取文件对象
+                     //检测是否是拖拽文件到页面的操作
+                     if (fileList.length == 0) {
+                         return false;
+                     }
+                     //检测文件是不是图片
+                     if (fileList[0].type.indexOf('image') === -1) {
+                         alert("您拖的不是图片！");
+                         return false;
+                     }
+                     //var filename = fileList[0].name; //图片名称
+                     var filesize = Math.floor((fileList[0].size) / 1024 / 1024);
+                     if (filesize > 5) {
+                         alert("图片大小不能超过5M!");
+                         return false;
+                     }
+                     var formData = new FormData();
+                     formData.append('myfile', fileList[0]);
+                     SearchImage(formData);
+
+                 });
+
+                 //粘贴路径,识图搜索
+                 $("#url_form_sbm").click(function () {
+                     var imgurl = $("#url_form_query").val();
+                     if (imgurl == "") { alert("请填写图片网址!"); return; }
+                     var fileend = imgurl.substring(imgurl.lastIndexOf(".")).toLowerCase();
+                     if (fileend.indexOf("?") > 0) {
+                         fileend = fileend.substring(0, fileend.indexOf("?"));
+                     }
+                     if (fileend.indexOf("@") > 0) {
+                         fileend = fileend.substring(0, fileend.indexOf("@"));
+                     }
+                     if (fileend.indexOf("#") > 0) {
+                         fileend = fileend.substring(0, fileend.indexOf("#"));
+                     }
+                     var filetypes = [".jpg", ".png", ".jpeg", ".gif"];
+                     if ($.inArray(fileend, filetypes) < 0) {
+                         alert("不是图片地址,请填写图片地址!");
+                         return;
+                     }
+                     var formData = new FormData();
+                     formData.append("url", imgurl);
+                     SearchImage(formData);
+                 });
+
+                 function getImageWidth(url, callback) {
+                     var img = new Image();
+                     img.src = url;
+
+                     // 如果图片被缓存，则直接返回缓存数据
+                     if (img.complete) {
+                         callback(img.width, img.height);
+                     } else {
+                         // 完全加载完毕的事件
+                         img.onload = function () {
+                             callback(img.width, img.height);
+                         }
+                     }
+                 }
+
+                 //拖进
+                 document.addEventListener('dragenter', function (e) {
+
+                     e.preventDefault();
+                 });
+                 //拖来拖去
+                 document.addEventListener('dragover', function (e) {
+                     e.preventDefault();
+                 });
+                 var box = document.getElementById('dragbox_common'); //拖拽区域
+                 box.addEventListener("drop", function (e) {
+                     e.preventDefault(); //取消默认浏览器拖拽效果
+                     var fileList = e.dataTransfer.files; //获取文件对象
+                 }, false);
+
+             };
+
+
+
+             $('#no_ie_panel')[0].addEventListener('dragenter', function (e) {
+                 $('#dragbox_common').show();
+                 //            $("#shitubox").hide();
+             }, false);
+
+             //拖拽离开,关闭按钮
+             $("#close_dragbox_common").click(function () {
+                 $("#dragbox_common").hide();
+                 $(".searchcon").show();
+             })
+
+             $("#closeshitubox").click(function () {
+                 $("#shitubox").hide();
+                 $(".searchcon").show();
+             })
+
+             $("#help_icon").hover(function () {
+                 $("#help_content").show();
+             })
+             $("#help_icon").mouseleave(function () {
+                 $("#help_content").hide();
+             })
+
+             function GetWidth(SrcWidth, SrcHeight, aimHeight) {
+                 return Math.round(SrcWidth * aimHeight * 1.0 / SrcHeight); //舍弃小数 否则 ceil
+             }
+             //<--以图搜图结束-->
+
+             function OnSearchImgLoading() {
+                 $("<div id='divImgLoading'></div>").css({
+                     opacity: 0.9,
+                     background: 'white',
+                     position: 'absolute',
+                     top: 0,
+                     left: 0,
+                     zIndex: 88888,
+                     height: '100%',
+                     width: '100%'
+                 }).appendTo('#shitubox,#dragbox_common');
+                 $("<image id='ImgLoading' src='/image/neworiental/loading.gif' style='margin:auto'></image>").css({
+                     top: 0,
+                     left: 0,
+                     bottom: 0,
+                     right: 0,
+                     position: 'absolute',
+                     zIndex: 99999
+                 }).appendTo('#shitubox,#dragbox_common');
+             }
+             function OnHideImgLoading() {
+                 $("#shitubox #divImgLoading,#ImgLoading").remove();
+                 $("#dragbox_common #divImgLoading,#ImgLoading").remove("#divImgLoading");
+                 $("#shitubox").show();
+                 $("#dragbox_common").hide();
+             }
+             function SearchImage(formData) {
+                 OnSearchImgLoading();
+                 $.ajax({
+                     url: "http://shitu.quanjing.com//upload.ashx",
+            type: "POST",
+            jsonp: "jsoncallback",
+            crossDomain: true,
+            data: formData,
+            /**
+            *必须false才会自动加上正确的Content-Type
+            */
+            contentType: false,
+            /**
+            * 必须false才会避开jQuery对 formdata 的默认处理
+            * XMLHttpRequest会对 formdata 进行正确的处理
+            */
+            processData: false,
+            complete: function (data) {
+                var data = eval(data.responseText);
+                if (data.status == "true") {
+                    location.href = "/SearchImage.aspx?q=" + data.msg;
+                }
+                else {
+                    alert(data.msg);
+                }
+                OnHideImgLoading();
+            }
+        });
+    }
+
+
+    //  头部搜索逻辑
+    function Search() {
+        if (window.location.href.toLowerCase().indexOf("searchresult") < 0 && window.location.href.toLowerCase().indexOf("motionresult") < 0 && window.location.href.toLowerCase().indexOf("/search.aspx") < 0 && window.location.href.toLowerCase().indexOf("/search6.aspx") < 0) {
+            SearchImgDefault();
+        }
+        else {
+            SearchImg(0);
+        }
+    }
+    function SearchImgDefault() {
+     var pagesize = "100";
+      //默认改为200条
+       // var pagesize = "200";
+        if ($.cookie('pageSizeCount') != null && $.cookie('pageSizeCount') != '') {
+            pagesize = "200";
+        }
+        var keyword = $("#txt_Keyword").val();
+        keyword = $.trim(keyword);
+        keyword = keyword.replace(/\*/g, "");
+        keyword = keyword.replace(/\#/g, "");
+        keyword=FilterCharacter(keyword);
+        var keyLength = GetLength(keyword);
+        if (keyLength == 0) {
+            alert('请输入关键字！');
+            document.getElementById('txt_Keyword').focus();
+            return false;
+        }
+        keyword = keyword.replace(/\|\|/g, "|").replace(/\|/g, " or ").replace(/\&\&/g, "&").replace(/\&/g, " and ").replace(/\#/g, "");
+        if (window.location.href.toLowerCase().indexOf("motion") > 0) {
+            hrefLink = "/Motion/MotionResult.aspx?q=" + encodeURI(keyword + "||1|20|1|" + rmrf + "|||||");
+        }
+        flag_type=$(".type_downlist").attr("v");
+         var hrefLink = "/search.aspx?q=" + encodeURI(keyword.toLowerCase()) + "||1|" + pagesize + "|1|2|||||";
+            switch (flag_type) {
+                case '1':
+                    hrefLink = "/search.aspx?q=" + encodeURI(keyword.toLowerCase());
+
+                    break;
+                case '2':
+                    hrefLink = "/search.aspx?imageUType=p&q=" + encodeURI(keyword.toLowerCase());
+
+                    break;
+                case '3':
+                    hrefLink = "/search.aspx?btype=v&q=" + encodeURI(keyword.toLowerCase());
+                   
+                    break;
+                case '4':
+                    hrefLink = "/search.aspx?imageUType=i&q=" + encodeURI(keyword.toLowerCase());
+
+                    break;
+                case '5':
+                    hrefLink = "http://v.quanjing.com/search.aspx?q=" + encodeURI(keyword.toLowerCase()) + "||1|" + pagesize + "|1|2||||";
+                    break;
+                default:
+
+            }
+            window.location.href = hrefLink;
+        //document.location = "/search.aspx?q=" + encodeURI(keyword.toLowerCase()) + "||1|60|1|2||||";
+        //document.location = "http://sr.quanjing.com/search.html?q=" + encodeURI(keyword);
+    }
+
+    //过滤非法字符  //字符串 非（数字、字母、汉字、空格、-、_、:）字符 替换成空值
+     function FilterCharacter(keyword)
+     {
+        var reg = new RegExp("[^\\u4e00-\\u9fa5a-zA-Z\\s\\d-_:]");
+        var rs = "";
+        for (var i = 0, l = keyword.length; i < keyword.length; i++) {
+            rs = rs + keyword.substr(i, 1).replace(reg, '');
+        }
+        return rs; 
+     }
+    //购物车数量显示
+    if ("0" == "1" && $("#HeadShopCartCount").length > 0) {
+        var userid = $("#hiddenUserId").val();
+        var HeadShopCartCountValue = GetCookie("QuanjingHeadShopCartCount_" + userid);
+        if (HeadShopCartCountValue == "null" || HeadShopCartCountValue == null || HeadShopCartCountValue == "" || HeadShopCartCountValue == "undefined") {
+            //取值
+            $.ajax({
+                type: "GET",
+                url: "/useraccount.ashx",
+                data: "oper=getshopcartcount",
+                cache: false,
+                success: function (msg) {
+                    HeadShopCartCountValue = msg.toString();
+                    SetCookie("QuanjingHeadShopCartCount_" + userid, HeadShopCartCountValue)
+                    $("#HeadShopCartCount").html(HeadShopCartCountValue);
+                },
+                error: function () {
+                    $("#HeadShopCartCount").html("0");
+                }
+            });
+        }
+        else {
+            $("#HeadShopCartCount").html(HeadShopCartCountValue);
+        }
+    }
+
+
+
+    </script>
+
+    <script type="text/javascript" language="javascript">
+        var loginName = '';
+        var userstate = '0';
+        var isvirtual = 'False';
+        var IsPrepaymentUser ='False'
+        $(function () {
+            //           var navigation = $('#navigation');
+            //           var navigationKey = $('#navigationKey');
+            //           var navigationValue_ul = $('#navigationValue ul');
+            //           var navigationbar_li = $('#navigationbar li');
+            //           var navigationValue = $('#navigationValue');
+            //           //navigation.on('click', function () {
+            //           navigation.click(function () {
+            //               if (navigationKey.is(':visible')) {
+            //                   navigationKey.hide('2000');
+            //                   navigationValue.hide();
+            //               } else {
+            //                   navigationKey.show('2000');
+            //                   navigationValue.show('2000');
+            //                   navigationValue_ul.hide();
+            //                   $("#rm").show('2000');
+            //                   $("#navigationbar li a").removeClass("current");
+            //                   $("#navigationbar li:first a").addClass("current");
+            //               }
+            //           })
+            //           navigationbar_li.mouseover(function () {
+            //               navigationbar_li.find("a").removeClass("current");
+            //               //$('#navigationbar li a').removeClass("current");
+            //               $(this).find("a").addClass("current");
+            //               var navigationbar_li_this = $(this);
+            //               navigationValue_ul.each(function (i, e) {
+            //                   if ($(e).attr('id') == navigationbar_li_this.attr('go')) {
+            //                       navigationValue.show();
+            //                       $(e).stop(true, true, true).show();
+            //                   } else {
+            //                       $(e).stop(true, true, true).hide();
+            //                   }
+            //               });
+            //           });
+
+            $(".a_login_class").click(function () {
+                if ($(".mylist").is(':visible')) {
+                    $(".mylist").hide('2000');
+                } else {
+                    $(".mylist").show('2000');
+                }
+            })
+            //$(".a_loginnot_class").on('click', function () {
+            $(".a_loginnot_class").click(function () {
+                if ($(".reg2016").is(':visible')) {
+                    $(".reg2016").hide('2000');
+                } else {
+                    $(".reg2016").show('2000');
+                }
+            })
+
+            $("#navigationValue ul li a").click(function () {
+                window.open('/search.aspx?q=' + encodeURI($(this).text()));
+            })
+            var clearKey = $('#clearKey'),
+        txt_Keyword = $('#txt_Keyword');
+            txt_Keyword.on('input propertychange', function () {
+                if ($.trim(txt_Keyword.val()) != '') {
+                    clearKey.parent().show();
+                } else {
+                    clearKey.parent().hide();
+                }
+            });
+            clearKey.on('click', function () {
+                txt_Keyword.val('');
+                clearKey.parent().hide();
+            });
+        })
+
+        $(function () {
+            $("#user_login,#txt_Keyword,div.pop_fav_holder,#navigation,.a_login_class,.a_loginnot_class").click(function (e) { if (e && e.stopPropagation) e.stopPropagation(); else window.event.cancelBubble = true; });
+            $(document.body).click(function () { $("#user_login,#pop_tel,#pop_lang,#pop_kefu,#txt_Keyword_list,.pop_fav_holder,#navigationKey,#navigationValue,.reg,.mylist").hide(); });
+        })
+
+        //  头部搜索逻辑
+        function Search() {
+            //  SearchImg(0);       
+            //        getHtml();
+        }
+  
+    </script>
+    <div id="content" style="clear: both; font-family: 'Microsoft Yahei', Simsun, Arial, sans-serif; min-width: 1186px">
+        <div class="result_bar clearfix">
+            <div class="result_sort">
+                <ul id="sort" class="sort sort_first">
+                    <li class="on" v="1" title="创意内容优先">创意排序</li><li v="2" title="东方内容优先">东方排序</li><li
+                        v="3" title="新图优先">最新排序</li></ul>
+                                        <ul class="sort" id="Copyright">
+                    <li class="on" value="2">全部</li><li value="0">RM</li><li value="1">RF</li>
+                </ul>
+                <ul id="hvsp" class="sort">
+                    <li class="on" v="all" title="搜索全部">全部</li><li v="h" title="搜索横图">横图</li><li v="v"
+                        title="搜索竖图">竖图</li></ul>
+                
+                <ul id="black_white" class="sort">
+                    <li class="on" v="1" title="切换成白背景">白背景</li><li v="2" title="切换成黑背景">黑背景</li></ul>
+                <ul class="sort"  style=" height: 50px;" id="ps">  
+                    <div class="ds_row ds_page_num" id="pagesize">
+                        <span v="100" style="margin: 2px 1px 0 8px" title="每页100张">100<i></i></span> <span
+                            v="200" style="margin: 2px 1px 0 12px" title="每页200张">200<i></i></span>
+                    </div>
+                </ul>
+                <ul class="sort" style="width: 70px; padding-right: 0;" id="xs">
+                    
+                    <ul id="grid-mode" class="grid_mode" style="height: 51px">
+                        <li class="on" id="grid-mode2" showmode="2" style="margin: 0 6px 0 10px" title="等高模式">
+                        </li>
+                        <li id="grid-mode1" showmode="1" title="标准模式"></li>
+                    </ul>
+                </ul>
+                <div class="display_setting" id="g" style="display: none">
+                    <div id="ds-title" class="ds_title">
+                        显示设置<i></i></div>
+                    <div id="ds-pop" class="ds_pop" style="display: none;">
+                        <div id="pagesize2" class="ds_row ds_page_num">
+                            <span style="width: 32px; border: none">每页</span> <span v="100" title="每页100张">100<i></i></span><span
+                                v="200" title="每页200张">200<i></i></span></div>
+                        <div id="black_white2" class="ds_row ds_page_num">
+                            <span style="width: 32px; border: none">背景</span> <img src="/images/search2016/white.gif" style="border:0; margin-left:8px; cursor:pointer;" v="1" title="切换成白背景" /><img style="border:0; margin-left:14px; cursor:pointer;"
+                                v="2" title="切换成黑背景" src="/images/search2016/black.gif" /></div>
+                        <div class="ds_row ds_page_num">
+                       
+                            <span style="border:0">显示方式</span><ul id="grid-mode_two" class="grid_mode" style="margin-top: -17px;
+                                float: right">
+                                <li class="on" id="grid-mode2_two" showmode="2" title="等高展示"></li>
+                                <li id="grid-mode1_tow" showmode="1" style="margin-left: -3px; margin-right: 9px"
+                                    title="等宽展示"></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="result_pager">
+                <div class="total_num">
+                    共<strong style="margin: 0 4px; color: #f29600" id="sumpic">0</strong>张图片</div>
+                <div class="pager">
+                    <div class="btn_pager dom_btn_pager_prev" id="btn_pager_prev" style="display: none">
+                        上一页</div>
+                    <input value="1" style="width: 45px; text-align: center; padding: 0px 2px;" class="btn_page" type="text" /><div
+                        class="page_num">
+                        共<span id="sumpage">0</span>页</div>
+                    <div id="btn_pager_next" class="btn_pager btn_pager_next">
+                        下一页</div>
+                </div>
+            </div>
+        </div>
+        <ul id="gallery-list" class="gallery_list" style="text-align: left; min-height: 600px;
+            padding: 5px 1px 5px 5px">
+        </ul>
+        <div class='gallery'>
+            <div class='bottom bt_splitpage' id="bt_splitpage" style="margin: 0 auto;">
+                <div class='previous'>
+                    <a href='javascript:void(0)' id="previous">上一页</a>
+                </div>
+                <div class='number' style="margin-top:0;">  
+                    <input name='' value="1" class="bottom_btn_page" type="text" style="width:59px;"/>共 <span id="bottom_sumpage">
+                        0</span> 页
+                </div>
+                <div class='next'>
+                    <a href='javascript:void(0)' id="next">下一页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div>
+
+    </div>
+    <!--保存到收藏夹成功-->
+    <div class="pop_box" id="pop-save-fav-success">
+        <div class="pb_close">
+            close</div>
+        <div class="pb_title pb_title2">
+            保存到收藏夹</div>
+        <div class="pb_save_done">
+            成功保存至<span id="success_favname"></span>
+        </div>
+    </div>
+    <div class="pop_box" id="pop-save-fav" style="font-family: 'Microsoft Yahei',Simsun, Arial, sans-serif;
+        font-size: 12px;">
+        <div class="pb_close">
+            close</div>
+        <div class="pb_title">
+            保存到收藏夹</div>
+        <ul class="pb_fold_list" style="text-align: left">
+        </ul>
+        <a target="_blank" href="http://www.quanjing.com/myhome/purchase/lightbox.aspx">管理收藏夹</a>
+    </div>
+    <div>
+        <a href="javascript:window.scrollTo(0,0);" class="topbut" style="display:none;"></a>
+    </div>
+
+    <script type="text/javascript" src="/js/plugins.js?v=1"></script>
+    <script type="text/javascript" src="/js/jquery.collagePlus.js?v=1"></script>
+    <script type="text/javascript" src="/js/jquery.removeWhitespace.js?v=1"></script>
+    
+    <!--<script src="/js/jquery.lazyload.min.js?v=1" type="text/javascript"></script>-->
+    <script src="/js/jquery.cookie.js?v=1" type="text/javascript"></script>
+    <script src="/js/show.js?mid=124" language="javascript" type="text/javascript"></script>
+    <script src="/js/soso.js?mid=20180515" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="/js/searchtips2016.js?v=1"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.key_close_div').show();
+            $('#SearchPic').hide();
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 100) {
+                    $(".topbut").fadeIn(1500);
+                }
+                else {
+                    $(".topbut").fadeOut(1500);
+                }
+            });
+        })
+       
+    </script>
+    
+<iframe src="/Usercontrols/Footer_2018.aspx" style="width:100%;min-width:1186px;height:382px;" scrolling="no" id="imgbuy_footer"></iframe>
+
+<div style="display: none;">
+    <iframe style="display: none" id="downlayoutframe" name="downlayoutframe" src=""></iframe>
+</div>
+    
+<script src="/js/jquery.cookie.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var CEFlag ="1"
+    var loginNameInput = "";
+    var pwdInput = "";
+    function Login(evt) {
+        if (evt.keyCode == 13)
+            btnLogin_onclick();
+    }
+    function btnLogin_onclick() {
+        loginNameInput = $("#loginName").val();
+        pwdInput = $("#loginPwd").val();
+        if (loginNameInput == "" || pwdInput == "") {
+            alert("请输入用户名、密码！");
+            document.getElementById('loginName').focus();
+            return false;
+        }
+        $(".login_intro p:lt(2)").attr("style", "display:none;");
+        $(".login_intro p:eq(2)").attr("style", "display:block;");
+        var kstatus = "0";
+        if ($("#chk_KeepStatus").is(":checked")) kstatus = "1";
+        //if ($("#chk_KeepStatus").attr("checked") == true) kstatus = "1";
+        $.ajax({
+            type: "GET",
+            url: "/UserAccount.ashx",
+            cache: false,
+            data: "loginName=" + encodeURIComponent(loginNameInput) + "&pwd=" + encodeURIComponent(pwdInput) + "&oper=login&keepStatus=" + kstatus,
+            success: function (msg) {
+                $("#user_login").attr("style", "display:none;");
+                $(".login_intro p:eq(2)").attr("style", "display:none;");
+                $(".login_intro p:lt(2)").attr("style", "display:block;");
+
+                cb_Login(msg);
+            },
+            error: function (msg) {
+
+                $("#user_login").attr("style", "display:none;");
+                alert("系统繁忙，请稍后再试");
+                $(".login_intro p:eq(2)").attr("style", "display:none;");
+                $(".login_intro p:lt(2)").attr("style", "display:block;");
+
+            }
+        });
+
+        return false;
+    }
+
+    function cb_Login(result) {
+        if (result == "0") {
+            alert("登录失败!\n\r\n\r请确认用户名和密码是否正确!");
+            $("#user_login").attr({ style: "left:50%; top:50px;  z-index:999;margin-left:-240px;" })
+            $("#user_login").show();
+            $("#user_login input").eq(1).val('');
+            $("#user_login input").eq(0).focus();
+            return false;
+        }
+        else {
+            var resultArr = result.split('|');
+            loginName = resultArr[0];
+            var usertype = resultArr[1];
+            SetCookie("QuanJingLoginName", encodeURIComponent(loginNameInput));
+            if ($("#chk_rememberPwd").is(":checked")) {
+                SetCookie("QuanJing_" + encodeURIComponent(loginNameInput), qjencode(pwdInput));
+            }
+            else {
+                SetCookie("QuanJing_" + encodeURIComponent(loginNameInput), "");
+            }
+            if (document.getElementById("BeforeLogin") != undefined) {
+                document.getElementById('BeforeLogin').style.display = "none";
+            }
+            if (document.getElementById("AfterLogin") != undefined) {
+                document.getElementById('AfterLogin').style.display = "block";
+            }
+            if (document.getElementById("LogInUserName") != undefined) {
+                document.getElementById('LogInUserName').innerHTML = loginName;
+            }
+            if (document.getElementById("hiddenLoginName") != undefined) {
+                document.getElementById("hiddenLoginName").value = loginName;
+            }
+
+            //在此触发重新加载处理 
+            var bl_transferPage = $("#hidden_transferPage").val();           
+            var Location = document.location;            
+            if (bl_transferPage == "") {
+                //判断首页                  
+                if (Location.pathname == "/" || Location.pathname == "/Default.aspx") {
+//                    if (usertype == "1")
+//                        document.location.href = "http://editorial.quanjing.com";
+//                    else
+                        document.location.href = document.location.href;
+                }
+            }
+            else if (bl_transferPage == '1') {
+                $("#hidden_transferPage").val('');
+                document.location.href = "/myhome/purchase/lightbox.aspx";
+            }
+            else if (bl_transferPage == '3') {
+                $("#hidden_transferPage").val('');
+                document.location.href = "/myhome/";
+            }
+            else if (bl_transferPage == '5') {
+                $("#hidden_transferPage").val('');
+                document.location.href = "~/inform.htm";
+            }
+            if (typeof (Reload) != 'undefined') {
+                Reload();
+            }
+        }
+    }        
+</script>
+<style type="text/css">
+  /*  #weiboLink img:hover{src:"../images/weibo.gif"}*/
+  #weiboLink{background: url(/images/weibo.gif) no-repeat; width:121px; height:32px; float:left;margin-left:40px;margin-top:10px}
+  #weiboLink:hover{background: url(/images/weibo2.gif) no-repeat; }
+  /* #weiboLink img:hover{ text:expression(src="../images/weibo.gif")};*/
+</style>
+<div id="user_login" class="login_holder" style="left: 300px; top: 50px; display: none;
+    z-index: 999;">
+    <div class="login_shaodow_top">
+    </div>
+    <div class="login_shaodow_middle">
+        <h2 class="h2_login">
+            <span>用户登录</span></h2>
+        <div class="login_content">
+            <div class="login_form">
+                <p>
+                    <label>
+                        用户名</label>
+                    <input type="text" id="loginName" maxlength="32" onkeydown="Login(event);" />
+                </p>
+                <p>
+                    <label>
+                        密<span style="width:1em;">&nbsp;</span>码</label>
+                    <input type="password" id="loginPwd" maxlength="32" onkeydown="Login(event);" />
+                </p>
+                <p style="margin-bottom: 2px;">
+                    <label>
+                        &nbsp;</label><input type="checkbox" id="chk_rememberPwd" style="float: left; width: auto;
+                            border: 0; margin-top: 0; padding: 0; top: 0px;" checked="checked" /><label id="lb_RememberPwd"
+                                for="chk_rememberPwd" style="top: 0; *top: 3px;">记住密码</label></p>
+                <p style="margin-bottom: 2px;">
+                    <label>
+                        &nbsp;</label><input type="checkbox" id="chk_KeepStatus" style="float: left; width: auto;
+                            border: 0; margin-top: 0; padding: 0; top: 0px;" checked="checked" /><label id="lb_KeepStatus"
+                                for="chk_KeepStatus" style="top: 0; *top: 3px; width: 75px;">保持登录状态</label></p>
+                <p>
+                    <input type="button" id="loginBtn" class="btn_submit" onclick="return btnLogin_onclick();" />
+                </p>
+            </div>
+            <div class="login_intro">
+                <p>
+                    如果您尚未注册，请<a href="/Register.aspx" target="_top">点击这里</a>进行注册。如果您忘记密码，请<a href="/forgetpwd/step1.aspx"
+                        target="_top">点击这里</a>找回密码。</p>
+                <p>
+                    摄影师请<a href="http://s.quanjing.com/" target="_top">点击这里</a>进行登陆。
+                    <br />
+                   
+                   <a href="/OAuth/SinaOauth.aspx?returnurl=http://www.quanjing.com" id="weiboLink">
+                
+                   </a>
+                 </p>
+                <p style="display: none;">
+                    <img src='/image/frameSet/loading.gif' alt='正在登录...' />登录中 请稍候... ...</p>
+            </div>
+        </div>
+    </div>
+    <div class="login_shaodow_bottom">
+    </div>
+    <a href="javascript:void(0)" class="pop_close1">关闭</a>
+    <input type="hidden" id="hidden_transferPage" visible="false" />
+</div>
+<script type="text/javascript" language="javascript">
+    document.getElementById("loginName").onfocus = function () { $("#loginPwd").val(''); }
+    document.getElementById("loginPwd").onfocus = function () {
+        loginNameInput = $("#loginName").val();
+        if (loginNameInput == null || loginNameInput == "") return false;
+        else {
+            //取出密码，并显示在密码框中
+            var pwd = GetCookie("QuanJing_" + encodeURIComponent(loginNameInput));
+            if (pwd == null || pwd == "")
+                return false;
+            else
+                $('#loginPwd').val(qjdecode(pwd));
+                //$('#loginPwd').val(pwd);
+        }
+    }
+    $('#user_login .pop_close1, #pop_tel .btn_close, #pop_lang .btn_close, #pop_kefu .btn_close').click(function () {
+        $("#user_login, #pop_tel, #pop_lang, #pop_kefu").hide();
+    });
+    $("#BeforeLogin a:eq(1)").click(function () {
+        //		if(location.href.indexOf("personalCentre")>-1)	$("#hidden_transferPage").val('3');
+        $("#user_login").attr({ style: "left:50%; top:50px;  z-index:999;margin-left:-240px;" })
+        $("#user_login").show();
+
+        var loginNameCookie = GetCookie("QuanJingLoginName");
+        loginNameCookie = decodeURIComponent(loginNameCookie);
+        if (loginNameCookie != null && loginNameCookie != "null")
+            $("#user_login input").eq(0).val(loginNameCookie);
+        $("#user_login input").eq(1).val('');
+        if (loginNameCookie != null && loginNameCookie != "") {
+            $("#user_login input").eq(1).focus();
+        }
+        else {
+            $("#user_login input").eq(0).focus();
+        }
+        return false;
+    });
+
+
+    $(".nav #zone").click(function () {
+        var loginName = document.getElementById("hiddenLoginName").value;
+        if (loginName == "") {
+            $("#hidden_transferPage").val('5');
+            $("#user_login").attr({ style: "left:50%; top:50px;  z-index:999;margin-left:-240px;" })
+            $("#user_login").show();
+
+            var loginNameCookie = GetCookie("QuanJingLoginName");
+            loginNameCookie = decodeURIComponent(loginNameCookie);
+            if (loginNameCookie != null && loginNameCookie != "null")
+                $("#user_login input").eq(0).val(loginNameCookie);
+            $("#user_login input").eq(1).val('');
+            if (loginNameCookie != null && loginNameCookie != "") {
+                $("#user_login input").eq(1).focus();
+            }
+            else {
+                $("#user_login input").eq(0).focus();
+            }
+            return false;
+        }
+    });
+
+
+    //$("#user_login,#txt_Keyword,.pop_fav_holder").click( function(oevent) { if(document.all) window.event.cancelBubble=true; else oevent.stopPropagation(); } ); 		  
+    $(function () {
+        $("#user_login,#txt_Keyword,div.pop_fav_holder").click(function (e) { if (e && e.stopPropagation) e.stopPropagation(); else window.event.cancelBubble = true; });
+        $(document.body).click(function () { $("#user_login,#pop_tel,#pop_lang,#pop_kefu,#txt_Keyword_list,.pop_fav_holder").hide(); });
+    })
+    function qjdecode(code) {
+        code = decodeURIComponent(code);
+        var c = String.fromCharCode(code.charCodeAt(0) - code.length);
+        for (var i = 1; i < code.length; i++) {
+            c += String.fromCharCode(code.charCodeAt(i) - c.charCodeAt(i - 1));
+        }
+        return c;
+    }
+</script>
+
+    
+<div class="pop_fav_holder" style="display: none;">
+<div class="pop_fav_shadow">
+<div class="pop_fav">
+<p>请选择收藏夹<a href="javascript:void(0);" class="btn_close">close</a></p>
+<p>
+<select id="selectFavList">
+</select>
+</p>
+<p><button type="button" id="btnAddToFav">添加</button></p>
+<p><a href="/myhome/purchase/lightbox.aspx" target="_blank">管理收藏夹>></a></p>
+</div>
+</div>
+</div>
+<input type="hidden" id="hiddenLightbox" />
+<script type="text/javascript" language="javascript">
+var currentPic = "";//当前图片
+var currentFav="";
+var currentFavIndex=0;
+var favListStr="";
+function FavFunction() {
+if(loginName=="") return false;
+document.getElementById("selectFavList").onchange=function(){currentFav = $("#selectFavList").val();currentFavIndex = $("#selectFavList option:selected").attr("idx");}
+
+$(".fav").click(function (e) {
+    if (e && e.stopPropagation) e.stopPropagation(); else window.event.cancelBubble = true;
+    //在此判断收藏夹是否已加载
+    favListStr = document.getElementById("hiddenLightbox").value;
+    if (favListStr == "") {
+        //        $("#btnAddToFav").attr("disabled","disabled");
+        $.ajax({
+            type: "GET",
+            url: "/myhome/purchase/handler/lightboxList.ashx",
+            data: "Oper=GetFavListForPop",
+            success: function (msg) {
+                if (msg == "0") { alert("收藏夹加载失败"); return false; }
+                favListStr = msg;
+                document.getElementById("hiddenLightbox").value = msg;
+                var folderArr = favListStr.split('$&#');
+                $("#selectFavList").empty();
+                for (var i = 0; i < folderArr.length; i++) {
+                    var folderKeyName = folderArr[i].split('$#');
+                    $("<option value='" + folderKeyName[0] + "' idx=" + i + ">" + folderKeyName[1] + "</option>").appendTo($("#selectFavList"));
+                }
+                $("#selectFavList option").eq(0).attr("checked", "checked");
+                //取index of lightbox from cookie
+                var lightboxCookie = GetCookie("LightBox");
+
+                var idx = 0;
+                try {
+                    if (lightboxCookie != null && lightboxCookie != "") {
+                        var lightboxCookieIndex = lightboxCookie.indexOf("=");
+                        if (lightboxCookieIndex > -1) idx = parseInt(lightboxCookie.substr(lightboxCookieIndex + 1, lightboxCookie.length - lightboxCookieIndex - 1));
+                        else idx = 0;
+                    }
+                    else idx = 0;
+                    // $("#btnAddToFav").attr("disabled","");
+                }
+                catch (err) {
+                    idx = 0;
+                }
+                $("#selectFavList option").attr("checked", "");
+                $("#selectFavList option").eq(idx).attr("checked", "checked");
+
+                currentFav = $("#selectFavList option").eq(idx).val();
+                document.getElementById("selectFavList").value = currentFav;
+            },
+            error: function (msg) {
+                alert("收藏夹加载失败");
+            }
+
+        });
+    }
+    $(".pop_fav_holder").css({ left: $(this).offset().left - 73, top: $(this).offset().top });
+    $(".pop_fav_holder").show();
+    currentPic = $(this).attr("val"); //设置当前的pic_id    
+});
+}
+$("#selectFavList").change(
+        function () {
+            var checkValue = $("#selectFavList").val();
+            var checkedidx = $("#selectFavList option[value='" + checkValue + "']").attr("idx");
+
+            // SetCookie("LightBox", "BoxSelectedIndex=" + checkedidx);
+            var expires = new Date();
+            expires.setTime(expires.getTime() + 365 * (24 * 60 * 60 * 1000));
+            //线上版本
+            document.cookie = "LightBox=BoxSelectedIndex=" + checkedidx+";path=www.quanjing.com;expires=" + expires.toGMTString();
+        });
+//$(document).mousedown(function(e){ $(".pop_fav_holder").hide(); });
+//$(".pop_fav_holder").mousedown( function(e){	e.stopPropagation(); });
+$('.pop_fav_holder .btn_close').click( function(){ $(".pop_fav_holder").hide();});	
+	    
+$("#btnAddToFav").click(function(){   
+    $.ajax({
+       type: "GET",
+       url: "/myhome/purchase/handler/lightboxDetail.ashx",	
+       cache:false,
+       data: "oper=AddPicToFavForPop&objId="+currentPic+"&lightboxId="+currentFav+"&selectedIndex="+currentFavIndex, 
+       success: function(msg){
+       if(msg=="0"){alert("添加失败");}
+       },
+	    error:function(){      
+           alert("您访问的页面出现问题，请稍候再试");	           
+           }
+        });  
+        $(".pop_fav_holder").hide();
+})  
+        
+</script>
+
+
+    <!-- End footer -->
+    <div style="display: none;">
+        <iframe style="display: none" id="downlayoutframe" name="downlayoutframe" src="">
+        </iframe>
+    </div>
+    </form>
+</body>
+</html>
