@@ -4,6 +4,8 @@
 
 """
 words from spring
+
+根据请求的地址，获取页面的上的英文单词
 """
 
 import requests
@@ -11,7 +13,7 @@ import re
 from typing import Union
 
 
-class TransformWords(object):
+class GenerateWords(object):
 
     def __init__(self):
         self._tags = ['!DOCTYPE', 'html', 'script' 'head', 'meta', 'title', 'link', 'script', 'body', 'div',
@@ -101,5 +103,5 @@ if __name__ == '__main__':
         'https://docs.spring.io/spring/docs/5.2.3.RELEASE/spring-framework-reference/integration.html#spring-integration',
         'https://docs.spring.io/spring/docs/5.2.3.RELEASE/spring-framework-reference/languages.html#languages',
     ]
-    transform_words = TransformWords()
+    transform_words = GenerateWords()
     transform_words.request_url(spring_framework_html_url)

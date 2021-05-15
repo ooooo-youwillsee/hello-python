@@ -2,10 +2,10 @@
 
 # 实现简单的http服务器
 
-import socket
+import simple_socket
 
 #  服务端socket
-server_socket = socket.socket()
+server_socket = simple_socket.simple_socket()
 
 server_socket.bind(("", 8888))
 #  服务端连接数
