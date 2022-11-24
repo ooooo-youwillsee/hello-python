@@ -101,7 +101,15 @@ def count_main(argv):
 
 
 if __name__ == '__main__':
-    count_main(['', 'C:/Users/ooooo/Development/Code/Demo/rocketmq', "java"])
-    count_knative_serving = count_main(['', 'C:/Users/ooooo/Development/Code/Demo/knative-serving', "go"])
-    count_knative_eventing = count_main(['', 'C:/Users/ooooo/Development/Code/Demo/knative-eventing', "go"])
-    print("dir: %s, count: %d" % ('dir_name', count_knative_serving + count_knative_eventing))
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/rocketmq', "java"])  # 55106
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/pulsar', "java"])  # 217334
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/shardingsphere', "java"])
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/nsq', "go"])  # 8732
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/kubesphere', "go"])  # 117630
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/kubernetes', "go"])  # 899756
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/etcd', "go"])  # 91172
+    # count_main(['', 'C:/Users/ooooo/Development/Code/Demo/istio', "go"])  # 110908
+    count_main(['', 'C:/Users/ooooo/Development/Code/Demo/grpc-go', "go"])  # 53902
+    # count_knative_serving = count_main(['', 'C:/Users/ooooo/Development/Code/Demo/knative-serving', "go"])  # 26279
+    # count_knative_eventing = count_main(['', 'C:/Users/ooooo/Development/Code/Demo/knative-eventing', "go"])  # 37871
+    # print("dir: %s, count: %d" % ('dir_name', count_knative_serving + count_knative_eventing))
